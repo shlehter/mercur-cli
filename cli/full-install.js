@@ -9,61 +9,14 @@ import {
 } from "./frontend-setup.js";
 
 export async function fullInstall() {
-  const { project_name } = await inquirer.prompt({
-    type: "input",
-    name: "project_name",
-    message: "What is your project name?",
-    default: "mercur",
-  });
-
-  const { install_storefront } = await inquirer.prompt({
-    type: "confirm",
-    name: "install_storefront",
-    message: "Install storefront?",
-    default: true,
-  });
-
-  const { install_vendor } = await inquirer.prompt({
-    type: "confirm",
-    name: "install_vendor",
-    message: "Install vendor panel?",
-    default: true,
-  });
-
-  const { db_url } = await inquirer.prompt({
-    type: "input",
-    name: "db_url",
-    message: "Database address:",
-    default: "localhost",
-  });
-
-  const { db_port } = await inquirer.prompt({
-    type: "input",
-    name: "db_port",
-    message: "Database port:",
-    default: "5432",
-  });
-
-  const { db_user } = await inquirer.prompt({
-    type: "input",
-    name: "db_user",
-    message: "Database user:",
-    default: "postgres",
-  });
-
-  const { db_pass } = await inquirer.prompt({
-    type: "input",
-    name: "db_pass",
-    message: "Database password:",
-    default: "postgres",
-  });
-
-  const { db_name } = await inquirer.prompt({
-    type: "input",
-    name: "db_name",
-    message: "Database name:",
-    default: "mercurjs",
-  });
+  const project_name = "mercur"
+  const install_storefront = true
+  const install_vendor = true
+  const db_url = "localhost"
+  const db_port = 5432
+  const db_user = "postgres"
+  const db_pass = "postgres"
+  const db_name = "mercurjs"
 
   console.log(chalk.blue("Downloading Mercur"));
   await pullAndInstall({
