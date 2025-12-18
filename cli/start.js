@@ -12,7 +12,6 @@ export async function startAll() {
   const vendorExists = fs.existsSync("vendor-panel");
   const adminPanelExists = fs.existsSync("admin-panel");
 
-  console.log("Vadim molodec")
   if (!backendExists) {
     spinner.fail("Mercur backend not detected!");
     process.exit();
