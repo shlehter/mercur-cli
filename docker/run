@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run -d --name mercurjs --restart unless-stopped --network host local/mercurjs
+

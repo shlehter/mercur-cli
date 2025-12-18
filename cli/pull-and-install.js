@@ -74,7 +74,7 @@ export async function pullAndInstall(options) {
       "git",
       [
         "clone",
-        "https://github.com/mercurjs/b2c-marketplace-storefront.git",
+        "git@github.com:shlehter/b2c-marketplace-storefront.git",
         "storefront",
       ],
       {
