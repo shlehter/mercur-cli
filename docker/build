@@ -1,1 +1,1 @@
-docker build -t local/mercurjs .
+docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" -t local/mercurjs .
