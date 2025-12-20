@@ -10,7 +10,7 @@ export async function storefrontSetup(options) {
     path.join(targetDir, "storefront/.env.local"),
     `MEDUSA_BACKEND_URL=http://localhost:9000
 NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=${options.publishableKey}
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_BASE_URL=http://localhost:3001
 NEXT_PUBLIC_DEFAULT_REGION=pl
 NEXT_PUBLIC_STRIPE_KEY=supersecret
 REVALIDATE_SECRET=supersecret
@@ -31,7 +31,7 @@ export async function adminPanelSetup(options) {
     path.join(targetDir, "admin-panel/.env"),
     `
     VITE_MEDUSA_BASE='/'
-VITE_MEDUSA_STOREFRONT_URL=http://localhost:3000
+VITE_MEDUSA_STOREFRONT_URL=http://localhost:3001
 VITE_MEDUSA_BACKEND_URL=http://localhost:9000
 VITE_MEDUSA_B2B_PANEL=true
     `
@@ -47,7 +47,7 @@ export async function vendorPanelSetup(options) {
   await fs.writeFile(
     path.join(targetDir, "vendor-panel/.env"),
     `VITE_MEDUSA_BASE=/
-VITE_MEDUSA_STOREFRONT_URL=http://localhost:3000
+VITE_MEDUSA_STOREFRONT_URL=http://localhost:3001
 VITE_MEDUSA_BACKEND_URL=http://localhost:9000
 VITE_PUBLISHABLE_API_KEY=
 VITE_TALK_JS_APP_ID=

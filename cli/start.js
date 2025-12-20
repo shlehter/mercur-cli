@@ -57,7 +57,7 @@ export async function startAll() {
   }
 
   if (storefrontExists) {
-    console.log("- B2C Storefront: http://localhost:3000");
+    console.log("- B2C Storefront: http://localhost:3001");
   }
 
   if (vendorExists) {

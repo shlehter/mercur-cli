@@ -1,7 +1,7 @@
 FROM node:krypton-bookworm
 
-RUN apt-get update
-RUN apt-get install -y iproute2 net-tools postgresql-client
+# RUN apt-get update
+# RUN apt-get install -y iproute2 net-tools postgresql-client
 
 WORKDIR /root
 
@@ -15,6 +15,6 @@ RUN mkdir workspace
 WORKDIR workspace
 
 RUN npm install git+https://github.com/shlehter/mercur-cli.git
-# RUN npx mercur-cli install
+COPY start_mercurjs /usr/bin
 
 CMD ["sleep", "infinity"]

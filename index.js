@@ -15,8 +15,6 @@ console.log(
 `)
 );
 
-console.log("asd vadim molodec")
-
 program.option("-v, --version", "Show version").action(() => {
   console.log(chalk.blue(`Mercur CLI v0.1.7`));
   process.exit(0);
