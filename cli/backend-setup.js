@@ -6,7 +6,7 @@ import ora from "ora";
 export async function backendSetup(options) {
   const targetDir = options.directory;
   const spinner = ora("Setting up Mercur backend...").start();
-  const DB_URL = `postgres://${options.db_user}:${options.db_pass}@${options.db_url}:${options.db_port}/${options.db_name}`;
+  const DB_URL = `postgres://${options.db_user}:${options.db_pass}@${options.db_url}:${options.db_port}/${options.db_name}?sslmode=disable`;
 
   await fs.writeFile(
     path.join(targetDir, "backend/.env"),
