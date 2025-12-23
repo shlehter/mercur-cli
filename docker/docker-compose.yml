@@ -1,0 +1,27 @@
+version: "3"
+services:
+    postgres:
+        image: postgres
+        shm_size: 128mb
+        restart: unless-stopped
+        container_name: "postgres"
+        environment:
+            - POSTGRES_PASSWORD=postgres
+        networks:
+            - acs_genieacs_network
+    mercurjs:
+        image: local/mercurjs
+        restart: unless-stopped
+        container_name: "mercurjs"
+        ports:
+            - "3001:3001"
+            - "5173:5173"
+            - "9000:9000"
+            - "9001:9001"
+        networks:
+            - acs_genieacs_network
+
+networks:
+    acs_genieacs_network:
+        external: true
+
