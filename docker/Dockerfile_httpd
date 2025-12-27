@@ -1,0 +1,14 @@
+# Build image: docker build -t local/labelwebsite .
+# Build and start container:
+#   docker run -d -p 6768:6768 --name labelwebsite local/labelwebsite
+
+FROM httpd:latest
+
+ENV TZ=Europe/Moscow
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update && apt-get install -y vim
+
+WORKDIR /usr/local/apache2/
+COPY httpd_mercurjs.conf ./
+RUN cat httpd_mercurjs.conf >>./conf/httpd.conf

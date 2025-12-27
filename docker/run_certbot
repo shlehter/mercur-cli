@@ -1,0 +1,5 @@
+sudo certbot certonly --cert-name marketplace.tlakepro.com \
+                      -d marketplace.tlakepro.com \
+                      -d admin.marketplace.tlakepro.com \
+                      -d vendor.marketplace.tlakepro.com \
+                      -d backend.marketplace.tlakepro.com

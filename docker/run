@@ -1,8 +1,16 @@
 #!/bin/bash
 
+# docker run -d \
+#            --name mercurjs \
+#            --restart unless-stopped \
+#            --network host \
+#            local/mercurjs
+
 docker run -d \
-           --name mercurjs \
+           --name web \
            --restart unless-stopped \
-           --network host \
-           local/mercurjs
+           --network acs_genieacs_network \
+           -p 80:80 -p 443:443 \
+           -v /etc/letsencrypt/:/etc/letsencrypt/ \
+           local/httpd
 

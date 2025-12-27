@@ -2,9 +2,17 @@
 
 if [ ! -d /root/workspace/mercur ]; then
     cd /root/workspace && npx mercur-cli install
+    cp /root/workspace/env_backend /root/workspace/mercur/backend/.env
+    cp /root/workspace/env_admin /root/workspace/mercur/admin-panel/.env
+    cp /root/workspace/env_vendor /root/workspace/mercur/vendor-panel/.env
+
     # Disable localhost binding for admin and vendor panels
     cd /root/workspace/mercur/admin-panel/ && sed -i 's/open: true,/open: true,\n      host: true,/' vite.config.mts
     cd /root/workspace/mercur/vendor-panel/ && sed -i 's/open: true,/open: true,\n      host: true,/' vite.config.mts
+
+    # Set allowed hosts for admin and vendor panels
+    cd /root/workspace/mercur/admin-panel/ && sed -i 's/host: true,/host: true,\n      allowedHosts: ["admin.marketplace.tlakepro.com"],/' vite.config.mts
+    cd /root/workspace/mercur/vendor-panel/ && sed -i 's/host: true,/host: true,\n      allowedHosts: ["vendor.marketplace.tlakepro.com"],/' vite.config.mts
 fi
 
 cd /root/workspace/mercur && /root/workspace/node_modules/.bin/mercur-cli dev
