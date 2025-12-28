@@ -1,5 +1,11 @@
 version: "3"
 services:
+    redis:
+        image: redis
+        restart: unless-stopped
+        container_name: "redis"
+        networks:
+            - acs_genieacs_network
     postgres:
         image: postgres
         shm_size: 128mb

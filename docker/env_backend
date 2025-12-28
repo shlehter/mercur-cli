@@ -2,7 +2,7 @@ STORE_CORS=https://marketplace.tlakepro.com
 ADMIN_CORS=https://backend.marketplace.tlakepro.com,https://admin.marketplace.tlakepro.com
 VENDOR_CORS=https://vendor.marketplace.tlakepro.com
 AUTH_CORS=https://backend.marketplace.tlakepro.com,https://admin.marketplace.tlakepro.com,https://vendor.marketplace.tlakepro.com,https://marketplace.tlakepro.com
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redis://redis:6379
 JWT_SECRET=supersecret
 COOKIE_SECRET=supersecret
 DATABASE_URL=postgres://postgres:postgres@postgres:5432/mercurjs?sslmode=disable

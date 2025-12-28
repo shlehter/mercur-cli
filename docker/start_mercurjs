@@ -13,6 +13,9 @@ if [ ! -d /root/workspace/mercur ]; then
     # Set allowed hosts for admin and vendor panels
     cd /root/workspace/mercur/admin-panel/ && sed -i 's/host: true,/host: true,\n      allowedHosts: ["admin.marketplace.tlakepro.com"],/' vite.config.mts
     cd /root/workspace/mercur/vendor-panel/ && sed -i 's/host: true,/host: true,\n      allowedHosts: ["vendor.marketplace.tlakepro.com"],/' vite.config.mts
+
+    # Enable redis in backend
+    cd /root/workspace/mercur/backend/ && sed -i '/modules: \[/a \    {\n      resolve: "@medusajs\/medusa\/cache-redis",\n      options: {redisUrl: process.env.REDIS_URL,},\n    },' medusa-config.ts
 fi
 
 cd /root/workspace/mercur && /root/workspace/node_modules/.bin/mercur-cli dev
