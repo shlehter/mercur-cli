@@ -25,7 +25,8 @@ do
 done
 cd ${BUILDDIR}/../
 cp httpd_mercurjs.conf ${ADMIN_VENDOR_DIST}
-docker build -f Dockerfile_backend -t local/mercurjs_backend build_dir/mercur/backend/
-docker build -f Dockerfile_storefront -t local/mercurjs_storefront build_dir/mercur/storefront/
 docker build -f Dockerfile_web -t local/mercurjs_web build_dir/admin_vendor_dist/
+cp ${BUILDDIR}/mercur/storefront/.env.local ${BUILDDIR}/mercur/storefront/.env
+docker build -f ${BUILDDIR}/mercur/storefront/Dockerfile -t local/mercurjs_storefront ${BUILDDIR}/mercur/storefront/
+docker build -f Dockerfile_backend -t local/mercurjs_backend build_dir/mercur/backend/
 

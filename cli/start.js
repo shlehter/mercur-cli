@@ -53,11 +53,11 @@ export async function startAll() {
   console.log("- API: http://localhost:9000");
 
   if (adminPanelExists) {
-    console.log("- Admin Panel: http://localhost:9001");
+    console.log("- Admin Panel: http://localhost:9000");
   }
 
   if (storefrontExists) {
-    console.log("- B2C Storefront: http://localhost:3001");
+    console.log("- B2C Storefront: http://localhost:3000");
   }
 
   if (vendorExists) {
