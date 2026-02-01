@@ -1,8 +1,0 @@
-FROM node:krypton-bookworm
-
-WORKDIR /root/workspace/mercur/storefront
-COPY . .
-RUN npm run build
-
-CMD ["npm", "run", "start"]
-
