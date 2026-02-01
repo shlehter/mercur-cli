@@ -4,8 +4,7 @@ services:
         image: redis
         restart: unless-stopped
         container_name: "redis"
-        networks:
-            - acs_genieacs_network
+        network_mode: "host"
     postgres:
         image: postgres
         shm_size: 128mb
@@ -13,21 +12,20 @@ services:
         container_name: "postgres"
         environment:
             - POSTGRES_PASSWORD=postgres
-        networks:
-            - acs_genieacs_network
-    mercurjs:
-        image: local/mercurjs
+        network_mode: "host"
+    mercurjs_backend:
+        image: local/mercurjs_backend
         restart: unless-stopped
-        container_name: "mercurjs"
-        ports:
-            - "3001:3001"
-            - "5173:5173"
-            - "9000:9000"
-            - "9001:9001"
-        networks:
-            - acs_genieacs_network
-
-networks:
-    acs_genieacs_network:
-        external: true
+        container_name: "mercurjs_backend"
+        network_mode: "host"
+    mercurjs_storefront:
+        image: local/mercurjs_storefront
+        restart: unless-stopped
+        container_name: "mercurjs_storefront"
+        network_mode: "host"
+    mercurjs_web:
+        image: local/mercurjs_web
+        restart: unless-stopped
+        container_name: "mercurjs_web"
+        network_mode: "host"
 

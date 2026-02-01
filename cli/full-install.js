@@ -12,7 +12,7 @@ export async function fullInstall() {
   const project_name = "mercur"
   const install_storefront = true
   const install_vendor = true
-  const db_url = "postgres"
+  const db_url = "localhost"
   const db_port = 5432
   const db_user = "postgres"
   const db_pass = "postgres"
@@ -50,12 +50,12 @@ export async function fullInstall() {
     ${chalk.bold("Admin panel:")}
     login: ${chalk.cyanBright("admin@mercurjs.com")}
     password: ${chalk.cyanBright("admin")}
-    
+
     `);
   console.log(`
     ${chalk.bold("Vendor panel:")}
     login: ${chalk.cyanBright("seller@mercurjs.com")}
     password: ${chalk.cyanBright("secret")}
-    
+
     `);
 }

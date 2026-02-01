@@ -10,5 +10,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y vim
 
 WORKDIR /usr/local/apache2/
-COPY httpd_mercurjs.conf ./
-RUN cat httpd_mercurjs.conf >>./conf/httpd.conf
+COPY vendor-panel htdocs/vendor-panel
+COPY admin-panel htdocs/admin-panel
+COPY httpd_mercurjs.conf conf/httpd_mercurjs.conf
+RUN echo "Include conf/httpd_mercurjs.conf" >>./conf/httpd.conf
+# RUN cat ./conf/httpd_mercurjs.conf >>./conf/httpd.conf

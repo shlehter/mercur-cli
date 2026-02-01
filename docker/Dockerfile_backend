@@ -1,0 +1,10 @@
+FROM node:krypton-bookworm
+
+WORKDIR /root/workspace/mercur/backend
+COPY . .
+# RUN npm install -g dotenv-cli
+# RUN npx dotenv -- npm run build
+RUN npm run build
+
+CMD ["npm", "run", "start"]
+

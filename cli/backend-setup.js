@@ -10,10 +10,10 @@ export async function backendSetup(options) {
 
   await fs.writeFile(
     path.join(targetDir, "backend/.env"),
-    `STORE_CORS=http://localhost:3001
-ADMIN_CORS=http://localhost:9000,http://localhost:9001
-VENDOR_CORS=http://localhost:5173
-AUTH_CORS=http://localhost:9000,http://localhost:9001,http://localhost:5173,http://localhost:3001
+    `STORE_CORS=https://market.tlakepro.com
+ADMIN_CORS=https://backend.market.tlakepro.com,https://admin.market.tlakepro.com
+VENDOR_CORS=https://vendor.market.tlakepro.com
+AUTH_CORS=https://backend.market.tlakepro.com,https://admin.market.tlakepro.com,https://vendor.market.tlakepro.com,https://market.tlakepro.com
 REDIS_URL=redis://localhost:6379
 JWT_SECRET=supersecret
 COOKIE_SECRET=supersecret

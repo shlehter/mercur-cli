@@ -1,2 +1,21 @@
-docker build -f Dockerfile_mercurjs --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" -t local/mercurjs .
-docker build -f Dockerfile_httpd -t local/httpd .
+#!/bin/bash
+
+BUILDDIR=$(pwd)/build_dir
+ADMIN_VENDOR_DIST=${BUILDDIR}/admin_vendor_dist
+mkdir -p ${ADMIN_VENDOR_DIST}
+rm -rf ${BUILDDIR}
+mkdir ${BUILDDIR}
+cd ${BUILDDIR}
+npm init -y
+npm install ../../
+npx mercur-cli install
+for i in admin-panel vendor-panel
+do
+    cd ${BUILDDIR}/mercur/${i} && npm run build:preview
+    cp -r ${BUILDDIR}/mercur/${i}/dist ${ADMIN_VENDOR_DIST}/$i
+done
+cp httpd_mercurjs.conf ${ADMIN_VENDOR_DIST}
+docker build -f Dockerfile_backend -t local/mercurjs_backend build_dir/mercur/backend/
+docker build -f Dockerfile_storefront -t local/mercurjs_storefront build_dir/mercur/storefront/
+docker build -f Dockerfile_httpd -t local/mercurjs_web build_dir/admin_vendor_dist/
+
