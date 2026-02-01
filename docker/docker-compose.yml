@@ -1,18 +1,5 @@
 version: "3"
 services:
-    redis:
-        image: redis
-        restart: unless-stopped
-        container_name: "redis"
-        network_mode: "host"
-    postgres:
-        image: postgres
-        shm_size: 128mb
-        restart: unless-stopped
-        container_name: "postgres"
-        environment:
-            - POSTGRES_PASSWORD=postgres
-        network_mode: "host"
     mercurjs_backend:
         image: local/mercurjs_backend
         restart: unless-stopped
@@ -28,4 +15,6 @@ services:
         restart: unless-stopped
         container_name: "mercurjs_web"
         network_mode: "host"
+        volumes:
+            - /etc/letsencrypt/:/etc/letsencrypt/:ro
 

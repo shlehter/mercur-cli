@@ -1,21 +1,31 @@
 #!/bin/bash
 
+# Install nodejs npm
+# npm install -g yarn
+
+set -a
+
+docker run -d --name redis --restart unless-stopped --network host redis
+docker run -d --name postgres --restart unless-stopped --network host --shm-size 128mb -e POSTGRES_PASSWORD=postgres postgres
+
 BUILDDIR=$(pwd)/build_dir
 ADMIN_VENDOR_DIST=${BUILDDIR}/admin_vendor_dist
-mkdir -p ${ADMIN_VENDOR_DIST}
 rm -rf ${BUILDDIR}
 mkdir ${BUILDDIR}
+mkdir ${ADMIN_VENDOR_DIST}
+cd ../ && npm install
 cd ${BUILDDIR}
 npm init -y
 npm install ../../
 npx mercur-cli install
 for i in admin-panel vendor-panel
 do
-    cd ${BUILDDIR}/mercur/${i} && npm run build:preview
+    cd ${BUILDDIR}/mercur/${i} && source .env && npm run build:preview
     cp -r ${BUILDDIR}/mercur/${i}/dist ${ADMIN_VENDOR_DIST}/$i
 done
+cd ${BUILDDIR}/../
 cp httpd_mercurjs.conf ${ADMIN_VENDOR_DIST}
 docker build -f Dockerfile_backend -t local/mercurjs_backend build_dir/mercur/backend/
 docker build -f Dockerfile_storefront -t local/mercurjs_storefront build_dir/mercur/storefront/
-docker build -f Dockerfile_httpd -t local/mercurjs_web build_dir/admin_vendor_dist/
+docker build -f Dockerfile_web -t local/mercurjs_web build_dir/admin_vendor_dist/
 

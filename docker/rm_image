@@ -1,2 +1,0 @@
-docker rm --force mercurjs_web
-docker image rm local/mercurjs_web

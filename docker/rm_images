@@ -1,0 +1,6 @@
+docker rm --force mercurjs_backend
+docker image rm local/mercurjs_backend
+docker rm --force mercurjs_storefront
+docker image rm local/mercurjs_storefront
+docker rm --force mercurjs_web
+docker image rm local/mercurjs_web
